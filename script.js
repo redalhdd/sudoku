@@ -729,8 +729,9 @@ function checkButtonClick() {
     var blocks = getBlocks(currentGrid);
 
     var currects = 0;
-    //mistakes = 0;
 
+   // mistakes = 0;
+    var mistakeDone = false;
     for (var i = 0; i < currentGrid.length; i++) {
       for (var j = 0; j < currentGrid[i].length; j++) {
         if (currentGrid[i][j] == "0") continue;
@@ -757,17 +758,16 @@ function checkButtonClick() {
                 : undefined
         );
 
-
-
-
         if (result === 1 || result === 0) {
           currects++;
-        } else if (result === 3) {
-          mistakes++;
+        } else if (result === 3 || result === 2) {
+          mistakeDone = true;
         }
-        displayMistakes();
       }
     }
+    if (mistakeDone) mistakes++;
+    displayMistakes();
+
 
     // if all values are correct and they equal original values then game over and the puzzle has been solved
     // if all values are correct and they aren't equal original values then game over but the puzzle has not been solved yet
