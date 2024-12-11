@@ -1,0 +1,150 @@
+/* Réinitialisation de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    transition: all 0.3s ease; /* Ajout d'une transition globale */
+}
+
+/* Corps de la page */
+body {
+    background-color: #eef2f7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    transition: background-color 0.5s ease; /* Transition pour le changement de couleur de fond */
+}
+
+/* Division pleine largeur */
+.fullscreen-banner {
+    width: 100%;
+    padding: 30px;
+    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+    color: white;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background 0.5s ease, box-shadow 0.5s ease; /* Transition pour le changement de couleur et d'ombre */
+}
+
+.fullscreen-banner h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    transition: font-size 0.3s ease; /* Transition pour le changement de taille de police */
+}
+
+.fullscreen-banner p {
+    font-size: 18px;
+    margin: 0;
+    transition: font-size 0.3s ease; /* Transition pour le changement de taille de police */
+}
+
+/* Conteneur principal */
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 90%;
+    max-width: 1400px; /* Augmentation de la largeur maximale */
+    margin-top: 30px;
+    flex-grow: 1;
+    transition: width 0.5s ease, max-width 0.5s ease; /* Transition pour le changement de largeur */
+}
+
+/* Section gauche */
+.left {
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease; /* Transition pour le changement de couleur et d'ombre */
+}
+
+.login, .signup {
+    margin-bottom: 30px;
+    transition: margin-bottom 0.3s ease; /* Transition pour le changement de marge */
+}
+
+.login h1, .signup h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    transition: font-size 0.3s ease, color 0.3s ease; /* Transition pour le changement de taille de police et de couleur */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    transition: flex-direction 0.3s ease; /* Transition pour le changement de direction de flex */
+}
+
+form label {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #555;
+    transition: font-size 0.3s ease, color 0.3s ease; /* Transition pour le changement de taille de police et de couleur */
+}
+
+form input[type="text"], form input[type="password"] {
+    margin-bottom: 20px;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s ease, border-radius 0.3s ease; /* Transition pour le changement de couleur de bordure et de rayon de bordure */
+}
+
+form input[type="submit"] {
+    padding: 12px;
+    font-size: 18px;
+    color: #fff;
+    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, border-radius 0.3s ease; /* Transition pour le changement de couleur de fond et de rayon de bordure */
+}
+
+form input[type="submit"]:hover {
+    background: linear-gradient(135deg, #3b41a0, #6b73d6);
+    transition: background 0.3s ease; /* Transition pour le changement de couleur de fond au survol */
+}
+
+/* Section droite */
+.right {
+    padding: 40px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease; /* Transition pour le changement de couleur et d'ombre */
+}
+
+.right h2 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    color: #333;
+    transition: font-size 0.3s ease, color 0.3s ease; /* Transition pour le changement de taille de police et de couleur */
+}
+
+.right p {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    transition: font-size 0.3s ease, color 0.3s ease; /* Transition pour le changement de taille de police et de couleur */
+}
+
+/* Ajout d'une animation pour les icônes */
+form label i {
+    margin-right: 10px;
+    transition: color 0.3s ease;
+}
+
+form label:hover i {
+    color: #4e54c8;
+}
