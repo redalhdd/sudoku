@@ -612,6 +612,9 @@ window.onload = function () {
         }
         checkInput(this);
 
+        if(pencilOn){
+          switchInputColor(this);
+        }
         // compare old value and new value then update remaining numbers table
         /*if (this.value > 0 && this.value < 10) remaining[this.value - 1]--;
         if (this.oldvalue !== "") {
@@ -718,11 +721,11 @@ function pauseGameButtonClick() {
 // check grid if correct
 function checkButtonClick() {
   // check if game is started
-  if (gameOn) {
+  if (gameOn && !pencilOn) {
 
     var currentGrid = [];
 
-    // read gritd status
+    // read grid status
     currentGrid = readInput();
 
     var columns = getColumns(currentGrid);
@@ -1011,28 +1014,7 @@ function sudokuSolverMenuClick() {
     .focus();
 }
 
-function solveButtonClick() {
-  if (gameOn) {
-    gameOn = false;
-    clearInterval(intervalId);
-  }
 
-  var result = solveSudoku(true);
-  switch (result) {
-    case 0:
-      alert("SOLVED");
-      break;
-    case 1:
-      alert("This grid is already solved");
-      break;
-    case 2:
-      alert("This grid can't be solved because of an invalid input");
-      break;
-    case 3:
-      alert("this grid has no solution");
-      break;
-  }
-}
 
 function isUniqueButtonClick() {
   // check if gird is already solved
@@ -1096,4 +1078,20 @@ var pencilOn = false;
 
 function pencilButtonClick() {
   pencilOn = !pencilOn;
+
+  if (pencilOn) {
+    document.getElementById("pencil-btn").style.backgroundColor = "#7b9ab4";
+  } else {
+    document.getElementById("pencil-btn").style.backgroundColor = "#1565c0";
+  }
+
+}
+
+function switchInputColor(input) {
+  if (pencilOn) {
+    input.style.color = "red"; // Change le texte en rouge
+    input.style.fontSize = "15px";
+  } else {
+    input.style.color = "black"; // Change le texte en noir
+  }
 }
