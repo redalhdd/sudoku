@@ -14,12 +14,42 @@ if (isset($_GET['username'])) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="css/style.css">
+  <link href="css/profile.css" rel="stylesheet" type="text/css">
   <script src="js/script.js"></script>
   <title>Sudoku</title>
 </head>
 <body>
     <div id="notification" class="notification">This is a notification!</div>
+    <nav class="navtop">
+        <div>
+            <h1>SUDOKU</h1>
+            <a id="profile-link"><i class="fas fa-user-circle"></i>Profile</a>
+            <a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
+        </div>
+    </nav>
+    
+
+    <!-- Modal Structure -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Profile Details</h2>
+            <table>
+                <tr>
+                    <td>Username:</td>
+                    <td><?= htmlspecialchars($_SESSION['name'], ENT_QUOTES) ?></td>
+                </tr>
+                <tr>
+                    <td>Score:</td>
+                    <td><?= htmlspecialchars($_SESSION['score'], ENT_QUOTES) ?></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script src="js/profile.js"></script>
         <div id="dialog" class="dialog">
           <div id="dialog-box" class="dialog-content">
             <div class="dialog-header">Nouvelle Partie</div>
@@ -65,16 +95,16 @@ if (isset($_GET['username'])) {
         </div>
       
       
-        <center>
+        <!-- <center>
           <h4 style="margin-top: 50px; font-size: 50px;">SUDOKU</h4>
 
-        </center>
+        </center> -->
         <div class="body" id="sudoku">
           <div class="card first">
             <ul class="game-status">
               <li>
                 <div id="timer-label" class="timer" style="padding:0;"><button onclick="showDialogClick('dialog');"
-                    class="button  my-button">Nouvelle partie</button>
+                    class="button  my-button" id="new-game">Nouvelle partie</button>
                 </div>
               </li>
       

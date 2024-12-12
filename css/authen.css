@@ -9,7 +9,7 @@
 
 /* Corps de la page */
 body {
-    background-color: #eef2f7;
+    background-color:  #A1B3D1;;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,8 +21,8 @@ body {
 .fullscreen-banner {
     width: 100%;
     padding: 30px;
-    background: linear-gradient(135deg, #4e54c8, #8f94fb);
-    color: white;
+    background-color: #212E53;
+        color: white;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: background 0.5s ease, box-shadow 0.5s ease; /* Transition pour le changement de couleur et d'ombre */
@@ -55,7 +55,7 @@ body {
 /* Section gauche */
 .left {
     padding: 30px;
-    background-color: #ffffff;
+    background-color: #D5D4E5;  
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
     transition: background-color 0.5s ease, box-shadow 0.5s ease; /* Transition pour le changement de couleur et d'ombre */
@@ -99,7 +99,7 @@ form input[type="submit"] {
     padding: 12px;
     font-size: 18px;
     color: #fff;
-    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+    background-color: #4A919E;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -113,7 +113,8 @@ form input[type="submit"]:hover {
 
 .right {
     padding: 40px;
-    background-color: #ffffff;
+    background-color:    #D5D4E5;  
+    
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
     display: flex;

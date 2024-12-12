@@ -248,6 +248,10 @@ td:nth-child(3n + 1) {
   margin-left: 32px;
   padding-top: 10px;
   padding-left: 10px;
+  width: 100%;
+  margin-right: 5%;
+  overflow: auto;      
+  max-height: 41em;   /* Active le défilement si nécessaire */
 }
 
 
@@ -256,6 +260,12 @@ td:nth-child(3n + 1) {
   margin-right: 32px;
   padding-top: 10px;
   padding-left: 10px;
+  width: 100%;
+  margin-left: 5%;
+  overflow: auto;         /* Active le défilement si nécessaire */
+  max-height: 41em;   /* Active le défilement si nécessaire */
+
+
 }
 
 .my-button{
@@ -579,38 +589,6 @@ td:nth-child(3n + 1) {
 }
 
 
-/*AJOUTS*/
-
-
-
-
-
-
-/*RESPONSIVE*/
-/* Comportement responsive */
-/*@media (max-width: 600px) {
-  .sudoku {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .box {
-    flex: none;
-    width: 100%;
-  }
-
-  .left,
-  .right {
-    order: 2;
-  }
-
-  .middle {
-    order: 1;
-    width: 100%;
-  }
-}*/
-
-
 
 
 .score-table table {
@@ -705,3 +683,25 @@ td:nth-child(3n + 1) {
 
 
 
+
+@media (max-width: 768px) {
+  .game {
+      width :auto;
+      margin: 5%;
+  }
+  #new-game{
+    position :fixed;
+    top: 7em;       /* Décalage depuis le haut */
+    left: 10px;      /* Décalage depuis la gauche */
+    padding: 10px 20px;
+   width : auto;
+    padding: 5%;
+  }
+
+  #sudoku {
+    flex-direction: column;
+  }
+
+
+
+}
