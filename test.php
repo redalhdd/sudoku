@@ -1,3 +1,14 @@
+<?php
+include 'db_connect.php';
+if (isset($_GET['username'])) {
+  $currentUsername = $_GET['username'];
+  echo "<script>var currentUsername = '" . htmlspecialchars($currentUsername, ENT_QUOTES, 'UTF-8') . "';</script>";
+} else {
+  echo "<script>console.error('Username is not defined');</script>";
+}
+
+// Fetch data and display in table
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,25 +16,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/script.js"></script>
-  <title>Copier valeur dans input</title>
+  <title>Sudoku</title>
 </head>
 <body>
-    <body>
+    <div id="notification" class="notification">This is a notification!</div>
         <div id="dialog" class="dialog">
           <div id="dialog-box" class="dialog-content">
-            <div class="dialog-header">New game</div>
+            <div class="dialog-header">Nouvelle Partie</div>
       
             <div class="dialog-body">
-              <p>Select game difficulty to get started.</p>
+              <p>Choisir la difficulté pour commencer.</p>
               <ul>
                 <li class="radio-option">
                   <label for="very-easy">
-                    <input id="very-easy" value="very easy" type="radio" name="difficulty"> Very easy
+                    <input id="very-easy" value="very easy" type="radio" name="difficulty"> Très facile
                   </label>
                 </li>
                 <li class="radio-option">
                   <label for="easy">
-                    <input id="easy" value="easy" type="radio" name="difficulty"> Easy
+                    <input id="easy" value="easy" type="radio" name="difficulty"> Facile
                   </label>
                 </li>
                 <li class="radio-option">
@@ -33,7 +44,7 @@
                 </li>
                 <li class="radio-option">
                   <label for="hard">
-                    <input id="hard" value="hard" type="radio" name="difficulty"> Hard
+                    <input id="hard" value="hard" type="radio" name="difficulty"> Difficile
                   </label>
                 </li>
                 <li class="radio-option">
@@ -48,7 +59,7 @@
               <button onclick="startGameButtonClick();" ripple-color="#003c8f"
                 class="button dialog-btn vertical-adjust">OK</button>
               <button onclick="hideDialogButtonClick('dialog');" ripple-color="#202020"
-                class="button dialog-btn vertical-adjust">Cancel</button>
+                class="button dialog-btn vertical-adjust">Annuler</button>
             </div>
           </div>
         </div>
@@ -56,13 +67,14 @@
       
         <center>
           <h4 style="margin-top: 50px; font-size: 50px;">SUDOKU</h4>
+
         </center>
         <div class="body" id="sudoku">
           <div class="card first">
             <ul class="game-status">
               <li>
                 <div id="timer-label" class="timer" style="padding:0;"><button onclick="showDialogClick('dialog');"
-                    class="button  my-button">New Game</button>
+                    class="button  my-button">Nouvelle partie</button>
                 </div>
               </li>
       
@@ -75,7 +87,7 @@
       
       
                 <div class="score-table">
-                  <table>
+                  <table id="leaderboard">
                     <thead>
                       <tr>
                         <th>#</th>
@@ -84,36 +96,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Chris</td>
-                        <td>100</td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Alex</td>
-                        <td>95</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>Jordan</td>
-                        <td>90</td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td>AbdelKader</td>
-                        <td>85</td>
-                      </tr>
-                      <tr>
-                        <td>5</td>
-                        <td>Réda</td>
-                        <td>80</td>
-                      </tr>
-                      <tr>
-                        <td>6</td>
-                        <td>Jordan</td>
-                        <td>75</td>
-                      </tr>
+                     
                     </tbody>
                   </table>
                 </div>
@@ -427,31 +410,31 @@
             <!--***********     LIGNE DE CHIFFRE     ********-->
             <div style="display: flex; flex-direction: row; align-items: center; width: 100%; justify-content: space-between;">
               <button class="button number-button"
-                style="margin: 5px; width: 40px; height: 40px; background-color: white; border: 1px solid #1565c0; font-weight: bold; color: #1565c0; font-size: 24px;"
+                style="margin: 5px; width: 40px; height: 40px; background-color: white; border: 1px solid #212E53; font-weight: bold; color: #212E53; font-size: 24px;"
                 value="1" onclick="selectNumber(this)">1</button>
               <button class="button number-button"
-                style="margin: 5px; width: 40px; height: 40px; background-color: white; border: 1px solid #1565c0; font-weight: bold; color: #1565c0; font-size: 24px;"
+                style="margin: 5px; width: 40px; height: 40px; background-color: white; border: 1px solid #212E53; font-weight: bold; color: #212E53; font-size: 24px;"
                 value="2" onclick="selectNumber(this)">2</button>
               <button class="button number-button"
-                style="margin: 5px; width: 40px; height: 40px; background-color: white; border: 1px solid #1565c0; font-weight: bold; color: #1565c0; font-size: 24px;"
+                style="margin: 5px; width: 40px; height: 40px; background-color: white; border: 1px solid #212E53; font-weight: bold; color: #212E53; font-size: 24px;"
                 value="3" onclick="selectNumber(this)">3</button>
               <button class="button number-button"
-                style="margin: 5px; width: 40px; height: 40px; background-color: white; border: 1px solid #1565c0; font-weight: bold; color: #1565c0; font-size: 24px;"
+                style="margin: 5px; width: 40px; height: 40px; background-color: white; border: 1px solid #212E53; font-weight: bold; color: #212E53; font-size: 24px;"
                 value="4" onclick="selectNumber(this)">4</button>
               <button class="button number-button"
-                style="margin: 5px; width: 40px; height: 40px; background-color: white; border: 1px solid #1565c0; font-weight: bold; color: #1565c0; font-size: 24px;"
+                style="margin: 5px; width: 40px; height: 40px; background-color: white; border: 1px solid #212E53; font-weight: bold; color: #212E53; font-size: 24px;"
                 value="5" onclick="selectNumber(this)">5</button>
               <button class="button number-button"
-                style="margin: 5px; width: 40px; height: 40px; background-color: white; border: 1px solid #1565c0; font-weight: bold; color: #1565c0; font-size: 24px;"
+                style="margin: 5px; width: 40px; height: 40px; background-color: white; border: 1px solid #212E53; font-weight: bold; color: #212E53; font-size: 24px;"
                 value="6" onclick="selectNumber(this)">6</button>
               <button class="button number-button"
-                style="margin: 5px; width: 40px; height: 40px; background-color: white; border: 1px solid #1565c0; font-weight: bold; color: #1565c0; font-size: 24px;"
+                style="margin: 5px; width: 40px; height: 40px; background-color: white; border: 1px solid #212E53; font-weight: bold; color: #212E53; font-size: 24px;"
                 value="7" onclick="selectNumber(this)">7</button>
               <button class="button number-button"
-                style="margin: 5px; width: 40px; height: 40px; background-color: white; border: 1px solid #1565c0; font-weight: bold; color: #1565c0; font-size: 24px;"
+                style="margin: 5px; width: 40px; height: 40px; background-color: white; border: 1px solid #212E53; font-weight: bold; color: #212E53; font-size: 24px;"
                 value="8" onclick="selectNumber(this)">8</button>
               <button class="button number-button"
-                style="margin: 5px; width: 40px; height: 40px; background-color: white; border: 1px solid #1565c0; font-weight: bold; color: #1565c0; font-size: 24px;"
+                style="margin: 5px; width: 40px; height: 40px; background-color: white; border: 1px solid #212E53; font-weight: bold; color: #212E53; font-size: 24px;"
                 value="9" onclick="selectNumber(this)">9</button>
             </div>
             <!--***********    FIN LIGNE DE CHIFFRE      ********-->
@@ -480,23 +463,36 @@
             
               <li>
       
-                <div style="width: 250px;">
+                <div style="width: 250px;  padding: 10%; border-radius: 5px;">
                   <h2>Règles du jeu</h2>
                   <ol>
-                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                    <li>Praesent sit amet arcu sodales, vehicula nulla pharetra, faucibus purus.</li>
-                    <li>Aliquam tristique bibendum est ultricies suscipit.</li>
-                    <li>Nulla facilisi.</li>
-                    <li>Morbi ornare tempor hendrerit.</li>
-                    <li>Quisque convallis sem velit, quis finibus leo pretium vel.</li>
-                    <li>Etiam a magna eu nisi iaculis aliquet.</li>
-                    <li>Cras sagittis mauris et quam pharetra pretium.</li>
-                    <li>Vivamus cursus tellus massa, vel dapibus purus mollis vel.</li>
-                    <li>Donec lobortis euismod dolor a pulvinar.</li>
-                    <li>Donec condimentum rutrum arcu, nec molestie dui commodo non.</li>
-                    <li>Mauris vel nunc maximus, gravida nisi vulputate, sodales dolor.</li>
-                    <li>Nunc mollis tempor dolor, sed aliquet eros faucibus sit amet.</li>
-                  </ol>
+                    <li><strong>Objectif du jeu</strong> : Remplir la grille avec des chiffres de manière à respecter les règles suivantes.</li>
+                    <li><strong>Grille standard</strong> : Un Sudoku classique est constitué d'une grille de 9x9 cases, divisée en 9 régions de 3x3 cases.</li>
+                    <li><strong>Règles de placement</strong> :
+                        <ul>
+                            <li>Chaque chiffre de 1 à 9 doit apparaître <strong>une seule fois</strong> dans chaque ligne.</li>
+                            <li>Chaque chiffre de 1 à 9 doit apparaître <strong>une seule fois</strong> dans chaque colonne.</li>
+                            <li>Chaque chiffre de 1 à 9 doit apparaître <strong>une seule fois</strong> dans chaque région de 3x3.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Score et Classement</strong> : 
+                      <ul>
+                        <li>Moins de temps et moins d'indices = meilleur score.</li>
+                        <li>Le classement est basé sur le score total des joueurs.</li>
+                   </ul>
+                    </li>
+                    <li><strong>Utilisation des indices</strong> <ul>
+                      <li>Vous pouvez utiliser des indices si vous bloquez sur une cellule.</li>
+                      <li>Un indice vous montrera un chiffre correct à placer.</li>
+                      <li>Utilisez judicieusement les indices pour maximiser vos chances de réussir.</li>
+                   </ul></li>
+                   <li><strong>Niveaux de difficulté</strong> <ul>
+                    <li>Facile : Plus de chiffres pré-remplis, idéal pour les débutants.</li>
+        <li>Intermédiaire : Moins de chiffres pré-remplis, nécessite plus de réflexion et d’analyse.</li>
+        <li>Difficile : Très peu de chiffres pré-remplis, nécessitant une logique et une concentration accrues.</li>
+   </ul></li>
+                    <li><strong>But final</strong> : Compléter toutes les cases de la grille en respectant ces règles.</li>
+                </ol>
                 </div>
                 
               </li>
@@ -515,7 +511,7 @@
     document.querySelectorAll('.case').forEach(input => {
       input.addEventListener('click', function () {
         activeInput = this;
-        console.log("Champ actif :", activeInput);
+        //console.log("Champ actif :", activeInput);
       });
     });
 
@@ -523,18 +519,18 @@
     function selectNumber(button) {
         if (selectedNumber != null) {
         selectedNumber.style.backgroundColor = "white";
-        selectedNumber.style.color = "#1565c0";
+        selectedNumber.style.color = "#212E53";
       }
-      button.style.backgroundColor = "#1565c0";
+      button.style.backgroundColor = "#212E53";
       button.style.color = "white";
       selectedNumber = button;
       
       if (activeInput) {
         activeInput.value = button.value;
-        console.log("Valeur insérée :", button.value);
+        //console.log("Valeur insérée :", button.value);
         activeInput.dispatchEvent(new Event('change')); // Déclenche "onchange" manuellement
       } else {
-        alert("Veuillez d'abord sélectionner un champ.");
+        showAlert("Veuillez d'abord sélectionner un champ.");
       }
     }
   </script>

@@ -111,7 +111,6 @@ form input[type="submit"]:hover {
     transition: background 0.3s ease; /* Transition pour le changement de couleur de fond au survol */
 }
 
-/* Section droite */
 .right {
     padding: 40px;
     background-color: #ffffff;
@@ -120,15 +119,17 @@ form input[type="submit"]:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: center;
-    transition: background-color 0.5s ease, box-shadow 0.5s ease; /* Transition pour le changement de couleur et d'ombre */
+    text-align: center; /* Center text in this section */
+    width: 100%; /* Ensure full width */
+    transition: background-color 0.5s ease, box-shadow 0.5s ease; /* Transition for background and box-shadow */
 }
 
 .right h2 {
     font-size: 28px;
     margin-bottom: 25px;
     color: #333;
-    transition: font-size 0.3s ease, color 0.3s ease; /* Transition pour le changement de taille de police et de couleur */
+    text-align: center; /* Center the headings */
+    transition: font-size 0.3s ease, color 0.3s ease; /* Transitions for styling */
 }
 
 .right p {
@@ -136,8 +137,23 @@ form input[type="submit"]:hover {
     color: #555;
     line-height: 1.6;
     margin-bottom: 15px;
-    transition: font-size 0.3s ease, color 0.3s ease; /* Transition pour le changement de taille de police et de couleur */
+    text-align: center; /* Center the paragraph text */
+    transition: font-size 0.3s ease, color 0.3s ease; /* Transitions for styling */
 }
+
+/* Ensure the ordered list inside has some margin and is well-aligned */
+.right ol {
+    margin: 0;
+    padding-left: 20px;
+    list-style: decimal inside; /* Display ordered list */
+    text-align: left; /* Ensure the list items are left-aligned, but the numbering is within the container */
+    color: #555; /* Color to match the text */
+}
+
+.right ol li {
+    margin-bottom: 10px; /* Add spacing between list items */
+}
+
 
 /* Ajout d'une animation pour les icônes */
 form label i {

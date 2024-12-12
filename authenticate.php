@@ -25,7 +25,8 @@ if ($stmt->num_rows > 0) {
 		$_SESSION['loggedin'] = TRUE;
 		$_SESSION['name'] = $_POST['username'];
 		$_SESSION['id'] = $id;
-		header('Location: test.html');
+		
+		header('Location: test.php?username=' . urlencode($_SESSION['name']));
 	} else {
 		// Incorrect password
 		header('Location: index.html?error=password_incorrect');

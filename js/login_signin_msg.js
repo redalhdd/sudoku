@@ -10,9 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (error === 'username_taken') {
             modalMessage.textContent = 'Nom d\'utilisateur déjà pris.';
         } else if (error== 'password_incorrect'){
-            modalMessage.textContent = 'Incorrect password!';
+            modalMessage.textContent = 'Mot de passe incorrect !';
         }else if (error== 'username_incorrect'){
-            modalMessage.textContent = 'Incorrect username !';
+            modalMessage.textContent = 'Nom d\'utilisateur incorrect !';
         }
         modal.style.display = 'block';
     }
