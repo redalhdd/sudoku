@@ -637,7 +637,6 @@ function startGameButtonClick() {
 // pause \ continue button click function
 function pauseGameButtonClick() {
   var img = document.getElementById("pause-img");
-  //var label = document.getElementById("pause-text");
 
   // change icon and label of the button and hide or show the grid
   if (pauseTimer) {
@@ -865,7 +864,6 @@ function hideDialogButtonClick(dialogId) {
 
   setTimeout(function () {
     dialog.style.visibility = "collapse";
-    //dialog.style.display = "none";
   }, 500);
 }
 
@@ -984,10 +982,6 @@ function handleGameEnd(isWin) {
 function showAlert(message) {
   showNotification(message, 'alert'); // Affiche une notification avec type 'alert'
 }
-
-
-
-
 
 
 

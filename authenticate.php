@@ -24,8 +24,6 @@ if ($stmt->num_rows > 0) {
 		session_regenerate_id();
 		$_SESSION['loggedin'] = TRUE;
 		$_SESSION['name'] = $_POST['username'];
-		$_SESSION['score'] = $_POST['username'];
-
 		$_SESSION['id'] = $id;
 		
 		header('Location: test.php?username=' . urlencode($_SESSION['name']));

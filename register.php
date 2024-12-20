@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$_SESSION['name'] = $_POST['new_username'];
         $_SESSION['score'] = $_POST['score'];
 		$_SESSION['id'] = $id;
-		header('Location: test.php');
+		header('Location: test.php?username=' . urlencode($_SESSION['name']));
     } else {
         // Error occurred during insertion
         echo 'Error: Could not register. Please try again later.';
