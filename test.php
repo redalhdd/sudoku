@@ -7,6 +7,9 @@ if (isset($_GET['username'])) {
   echo "<script>console.error('Username is not defined');</script>";
 }
 
+
+
+
 // Fetch data and display in table
 ?>
 <!DOCTYPE html>
@@ -99,7 +102,7 @@ if (isset($_GET['username'])) {
           <h4 style="margin-top: 50px; font-size: 50px;">SUDOKU</h4>
 
         </center> -->
-        <div class="body" id="sudoku">
+        <div class="body" id="sudoku" style="margin-top: 5em;">
           <div class="card first">
             <ul class="game-status">
               <li>
@@ -493,7 +496,7 @@ if (isset($_GET['username'])) {
             
               <li>
       
-                <div style="width: 250px;  padding: 10%; border-radius: 5px;">
+                <div style="width: 100%;  padding: 10%; border-radius: 5px;">
                   <h2>Règles du jeu</h2>
                   <ol>
                     <li><strong>Objectif du jeu</strong> : Remplir la grille avec des chiffres de manière à respecter les règles suivantes.</li>
@@ -532,7 +535,6 @@ if (isset($_GET['username'])) {
           </div>
         </div>
       
-        <div class="footer vertical-adjust">
          
   <script>
 
