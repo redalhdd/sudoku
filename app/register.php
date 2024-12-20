@@ -6,6 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve username and password from the form
     $username = trim($_POST['new_username']);
     $password = trim($_POST['new_password']);
+    $score = isset($_POST['score']) ? (int)$_POST['score'] : 0;  // Default score to 0 if not set
 
     // Check if the username is already taken
     $stmt = $con->prepare('SELECT id FROM accounts WHERE username = ?');
@@ -26,19 +27,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Insert new user into the database
-    $stmt = $con->prepare('INSERT INTO accounts (username, password, score) VALUES (?, ?,0)');
-    $stmt->bind_param('ss', $username, $hashed_password);
+    $stmt = $con->prepare('INSERT INTO accounts (username, password, score) VALUES (?, ?, ?)');
+    $stmt->bind_param('ssi', $username, $hashed_password, $score);
 
     if ($stmt->execute()) {
         // Registration successful
-        // Verification success! User has logged-in!
-		// Create sessions, so we know the user is logged in, they basically act like cookies but remember the data on the server.
-		session_regenerate_id();
-		$_SESSION['loggedin'] = TRUE;
-		$_SESSION['name'] = $_POST['new_username'];
-        $_SESSION['score'] = $_POST['score'];
-		$_SESSION['id'] = $id;
-		header('Location: test.php?username=' . urlencode($_SESSION['name']));
+        // Create sessions to track logged-in user
+        session_regenerate_id();
+        $_SESSION['loggedin'] = TRUE;
+        $_SESSION['name'] = $username;
+        $_SESSION['score'] = $score;  // Store score in session
+        $_SESSION['id'] = $con->insert_id;  // Store user ID
+
+        header('Location: test.php?username=' . urlencode($_SESSION['name']));
     } else {
         // Error occurred during insertion
         echo 'Error: Could not register. Please try again later.';

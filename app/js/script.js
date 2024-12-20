@@ -640,10 +640,10 @@ function pauseGameButtonClick() {
 
   // change icon and label of the button and hide or show the grid
   if (pauseTimer) {
-    img.src = "pause.webp";
+    img.src = "images/pause.webp";
     table.style.opacity = 1;
   } else {
-    img.src = "play.webp";
+    img.src = "images/play.webp";
     table.style.opacity = 0;
   }
 
